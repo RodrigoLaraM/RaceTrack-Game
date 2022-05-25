@@ -7,11 +7,13 @@
 #include <string>
 #include <algorithm>
 
+// Initialize the Vehicle
 Vehicle::Vehicle(char ch)
 {
     vehicle = ch;
 }
 
+// Setting Vehicles bearing(direction to move forward)
 void Vehicle::SetBearing(char X)
 {
     if (X == 'N' || X == 'S' || X == 'E' || X == 'W')
@@ -24,6 +26,7 @@ void Vehicle::SetBearing(char X)
     }
 }
 
+// Move number of steps forward
 void Vehicle::MoveForward(int X)
 {
     if (direction == 'N')
@@ -47,6 +50,7 @@ void Vehicle::MoveForward(int X)
     }
 }
 
+// Turn bearing to the right
 void Vehicle::TurnRight()
 {
     if (direction == 'N')
@@ -69,7 +73,7 @@ void Vehicle::TurnRight()
         direction = 'N';
     }
 }
-
+// Turn bearing to the left
 void Vehicle::TurnLeft()
 {
     if (direction == 'N')
@@ -93,22 +97,26 @@ void Vehicle::TurnLeft()
     }
 }
 
+// Operator <
 bool Vehicle::operator<(const Vehicle &c2) const
 {
     return (vehicle < c2.vehicle);
 }
 
+// Operator <<
 std::ostream &operator<<(std::ostream &o, const Vehicle &x)
 {
     o << x.vehicle;
     return o;
 }
 
+// Operator ==
 bool operator==(const Vehicle &c1, const Vehicle &c2)
 {
     return (c1.vehicle == c2.vehicle);
 }
 
+// Operator !=
 bool operator!=(const Vehicle &c1, const Vehicle &c2)
 {
     return (c1.vehicle != c2.vehicle);

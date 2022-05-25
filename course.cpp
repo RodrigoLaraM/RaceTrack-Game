@@ -14,10 +14,11 @@ using std::istringstream;
 using std::string;
 using std::vector;
 
+// Initializing the course
 Course::Course(string s)
 {
     s.erase(remove(s.begin(), s.end(), ' '), s.end());
-    vector<vector<char>> v;
+    vector<vector<char> > v;
     istringstream ss(s);
     string line;
 
@@ -56,6 +57,7 @@ Course::Course(string s)
     }
 }
 
+// Adding every vehicle to the Start('S') position of the course
 void Course::AddVehicleToStart(Vehicle *v)
 {
     vehicles.push_back(v);
@@ -64,7 +66,8 @@ void Course::AddVehicleToStart(Vehicle *v)
     v->position.second = start.second;
 }
 
-void Course::VehicleAccessor(const Course &c, vector<vector<char>> &temp_map)
+// Accessing the Vehicles data
+void Course::VehicleAccessor(const Course &c, vector<vector<char> > &temp_map)
 {
     for (Vehicle *i : c.vehicles)
     {
@@ -72,6 +75,7 @@ void Course::VehicleAccessor(const Course &c, vector<vector<char>> &temp_map)
     }
 }
 
+// Adding every Vehicle atthe Finish('F') position of the course
 set<Vehicle> Course::VehiclesAtFinish()
 {
     set<Vehicle> v;
@@ -85,6 +89,7 @@ set<Vehicle> Course::VehiclesAtFinish()
     return v;
 }
 
+// Copying Course object
 Course::Course(const Course &c)
 {
     course = c.course;
@@ -93,6 +98,7 @@ Course::Course(const Course &c)
     finish = c.finish;
 }
 
+// Operator =
 Course &Course::operator=(Course &rhs)
 {
     course = rhs.course;
@@ -104,6 +110,7 @@ Course &Course::operator=(Course &rhs)
     return (*this);
 }
 
+// Returns every Vehicle out of the track matrix to the start
 int Course::ReturnOffTrackVehiclesToStart()
 {
     int num_off_vehicles = 0;
@@ -119,9 +126,10 @@ int Course::ReturnOffTrackVehiclesToStart()
     return (num_off_vehicles);
 }
 
+// Operator <<
 std::ostream &operator<<(std::ostream &o, const Course &c)
 {
-    vector<vector<char>> temp_map = c.map;
+    vector<vector<char> > temp_map = c.map;
     Course object;
 
     object.VehicleAccessor(c, temp_map);

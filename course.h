@@ -14,15 +14,15 @@ using std::vector;
 
 class Course
 {
-    vector<vector<char>> course;
-    vector<vector<char>> map;
+    vector<vector<char> > course;
+    vector<vector<char> > map;
     pair<int, int> start;
     pair<int, int> finish;
     vector<Vehicle *> vehicles;
 
     const vector<char> &operator[](int m) const { return course.at(m); }
     vector<char> &operator[](int m) { return course.at(m); }
-    void VehicleAccessor(const Course &c, vector<vector<char>> &m);
+    void VehicleAccessor(const Course &c, vector<vector<char> > &m);
 
 public:
     Course(){};
@@ -30,9 +30,7 @@ public:
     void AddVehicleToStart(Vehicle *v);
     set<Vehicle> VehiclesAtFinish();
     Course(const Course &);
-    Course &operator=(Course &); /* Copy all members from c to current object and 
-    clear out c.vehicles make sure that c is different from current object. 
-    If *this == c return(*this) */
+    Course &operator=(Course &);
     int ReturnOffTrackVehiclesToStart();
 
     bool operator<(const Course &c2) const;
